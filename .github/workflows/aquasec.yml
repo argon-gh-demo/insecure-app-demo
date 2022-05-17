@@ -22,3 +22,5 @@ jobs:
           AQUA_KEY: ${{ secrets.AQUA_KEY }}
           AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
           TRIVY_RUN_AS_PLUGIN: 'aqua'
+          AQUA_URL: 'https://api-dev.aquasec.com/v2/build'
+          CSPM_URL: 'https://stage.api.cloudsploit.com/v2/tokens'
