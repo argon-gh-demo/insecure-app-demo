@@ -16,12 +16,11 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
+          security-checks: 'vuln,config,secret'
           hide-progress: false
           format: 'table'
-          security-checks: 'vuln,config,secret'
         env:
           AQUA_KEY: ${{ secrets.AQUA_KEY }}
           AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
           TRIVY_RUN_AS_PLUGIN: 'aqua'
-          AQUA_URL: 'https://api-dev.aquasec.com/v2/build'
-          CSPM_URL: 'https://stage.api.cloudsploit.com/v2/tokens'
+          TRIGGERED_BY: 'AQUA_TRIGGER_PLACEHOLDER'
