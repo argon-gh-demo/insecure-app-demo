@@ -2,7 +2,7 @@ name: build
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 jobs:
   build:
@@ -24,3 +24,4 @@ jobs:
           AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
           TRIVY_RUN_AS_PLUGIN: 'aqua'
           TRIGGERED_BY: 'PR'
+          GITHUB_TOKEN: ${{ github.token }}
