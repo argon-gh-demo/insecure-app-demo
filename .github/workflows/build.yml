@@ -21,7 +21,7 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v2
       
-      - name: build:
+      - name: build
         run: docker build -t test:test .
         
         
