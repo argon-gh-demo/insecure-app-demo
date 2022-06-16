@@ -15,7 +15,7 @@ RUN mkdir -p /usr/local/tomcat/
 WORKDIR /usr/local/tomcat
 RUN wget --no-check-certificate https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.81//bin/apache-tomcat-8.5.81.tar.gz
 RUN tar xvfz apache*.tar.gz
-RUN mv apache-tomcat-8.5.73/* /usr/local/tomcat/.
+RUN mv apache-tomcat-8.5.81 /* /usr/local/tomcat/.
 
 ADD start.sh /usr/local/tomcat/
 
