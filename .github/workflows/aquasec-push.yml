@@ -14,11 +14,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: aquasec/tracee:latest
-          run:   --name tracee --rm \
-                 --pid=host --cgroupns=host --privileged \
-                 -v /etc/os-release:/etc/os-release-host:ro \
-                 -v /var/run/containerd:/var/run/containerd
-                 -e LIBBPFGO_OSRELEASE_FILE=/etc/os-release-host
+          run:   '--name tracee --rm --pid=host --cgroupns=host --privileged -v /etc/os-release:/etc/os-release-host:ro -v /var/run/containerd:/var/run/containerd -e LIBBPFGO_OSRELEASE_FILE=/etc/os-release-host'
 
       - name: Run Trivy vulnerability scanner in IaC mode
         uses: aquasecurity/trivy-action@master
