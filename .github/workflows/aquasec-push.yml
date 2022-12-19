@@ -23,3 +23,26 @@ jobs:
           TRIVY_RUN_AS_PLUGIN: 'aqua'
           TRIGGERED_BY: 'PUSH'
           GITHUB_TOKEN: ${{ github.token }}
+      - name: build
+        run: mvn clean install
+      - name: Manifest Generation
+        run: |
+          export BILLY_SERVER=https://billy.codesec.aquasec.com
+          curl -sLo install.sh download.codesec.aquasec.com/billy/install.sh
+          curl -sLo install.sh.checksum https://github.com/argonsecurity/releases/releases/latest/download/install.sh.checksum
+          if ! cat install.sh.checksum | sha256sum ; then
+          echo "install.sh checksum failed"
+          exit 1
+          fi
+          BINDIR="." sh install.sh
+          rm install.sh install.sh.checksum
+          ./billy generate \
+            --access-token "${{ secrets.GITHUB_TOKEN }}" \
+            --aqua-key "${{ secrets.AQUA_KEY }}" \
+            --aqua-secret "${{ secrets.AQUA_SECRET }}" \
+            --artifact-path "." 
+
+            # The docker image name:tag of the newly built image
+            # --artifact-path "my-image-name:${{ env.tag-version }}" 
+            # OR the path to the root folder of your project. I.e my-repo/my-app 
+            # --artifact-path "${{env.MY_APP_ROOT}}"
