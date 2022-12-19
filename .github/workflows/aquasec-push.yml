@@ -27,6 +27,12 @@ jobs:
     runs-on: ubuntu-latest
     name: build
     steps:
+      - name: Check out Repository
+        uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
       - name: build
         run: mvn clean package
       - name: Manifest Generation
