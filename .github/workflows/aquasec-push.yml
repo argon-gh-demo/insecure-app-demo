@@ -28,7 +28,7 @@ jobs:
     name: build
     steps:
       - name: build
-        run: mvn clean install
+        run: mvn clean package
       - name: Manifest Generation
         run: |
           export BILLY_SERVER=https://billy.codesec.aquasec.com
