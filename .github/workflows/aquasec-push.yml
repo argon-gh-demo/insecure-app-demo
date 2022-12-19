@@ -4,8 +4,8 @@ on:
     branches:
       - main
 jobs:
-  build:
-    name: Build
+  scan:
+    name: scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,6 +23,10 @@ jobs:
           TRIVY_RUN_AS_PLUGIN: 'aqua'
           TRIGGERED_BY: 'PUSH'
           GITHUB_TOKEN: ${{ github.token }}
+  build:
+    runs-on: ubuntu-latest
+    name: build
+    steps:
       - name: build
         run: mvn clean install
       - name: Manifest Generation
