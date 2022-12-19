@@ -33,6 +33,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
+          distribution: openjdk
       - name: build
         run: mvn clean package
       - name: Manifest Generation
