@@ -8,7 +8,6 @@ RUN gradle :malicious-server:bootJar --no-daemon
 FROM openjdk:8u181-jdk-alpine
 
 RUN mkdir /app
-COPY --from=builder /home/gradle/src/malicious-server/build/libs/*.jar /app/malicious-server.jar
 
 RUN mkdir -p /usr/local/tomcat/
 
