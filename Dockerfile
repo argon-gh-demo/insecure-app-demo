@@ -14,3 +14,5 @@ RUN mkdir -p /usr/local/tomcat/
 WORKDIR /usr/local/tomcat
 
 CMD echo "Hello!"
+
+
